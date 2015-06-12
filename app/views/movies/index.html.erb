@@ -1,0 +1,31 @@
+<h1><%= pluralize(@movie.size, 'Movie')%></h1>
+
+
+
+<% @movie.each do |movie|%>
+<article>
+  <header>
+    <h2><%= link_to(movie.name, movie) %></h2>
+    <%= image_for(movie) %>
+    <h3><%= pluralize(movie.capacity, 'spot') %></h3>
+  </header>
+  <p> 
+       <strong>Rating:</strong>
+      <%= movie.rating %>
+  </p>
+  <table>
+    <tr>
+      <th>About:</th>
+      <td><%= truncate(movie.description, length: 35, seperator: '') %></td>
+    </tr>
+    <tr> 
+      <th>When:</th>
+      <td><%= movie.released_on %></td>
+    </tr>
+    <tr>
+      <th>Price:</th>
+      <td><%= format_price(movie) %></td>
+    </tr>
+  </table>
+</article>
+<%  end %>

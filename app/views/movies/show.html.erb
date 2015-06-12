@@ -1,0 +1,33 @@
+
+<article>
+  <header>
+      <%= image_for(@movies) %>
+      <h2><%= @movies.name %></h2>
+  </header>
+  <p> 
+       <strong>Rating:</strong>
+      <%= @movies.rating %>
+  </p>
+  <table>
+    <tr>
+      <th>About:</th>
+      <td><%= truncate(@movies.description, length: 35, seperator: '') %></td>
+    </tr>
+    <tr> 
+    <th>When:</th>
+    <td><%= @movies.released_on %></td>
+    </tr>
+    <tr>
+      <th>Price:</th>
+      <td><%= format_price(@movies) %></td>
+    </tr>
+    <h3>Capcity</h3>
+    <p>
+      <%= pluralize(@movies.capacity, 'spot')%>
+    </p>
+  </table>
+</article>
+
+
+<%= link_to 'Edit', edit_movie_path, remote: true %>
+<%= link_to 'Delete', movie_path(@movies),method: :delete, data: {confirm: 'Are you sure'} %>
